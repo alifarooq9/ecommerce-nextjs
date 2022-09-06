@@ -8,7 +8,7 @@ const Home: NextPage = () => {
 	return (
 		<>
 			<Head>
-				<title>Ecommerce</title>
+				<title>Clothing</title>
 				<meta
 					name="description"
 					content="This a ecommerce app with nextjs"

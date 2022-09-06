@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { FC, ReactNode } from "react";
 import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Header/Navbar";
 
 interface layoutTypes {
 	children: ReactNode;

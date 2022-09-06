@@ -8,6 +8,7 @@ import superjson from "superjson";
 import Layout from "../layouts/Layout";
 import type { AppRouter } from "../server/router";
 import "../styles/globals.css";
+import { RecoilRoot } from "recoil";
 
 const MyApp: AppType = ({
 	Component,
@@ -15,9 +16,11 @@ const MyApp: AppType = ({
 }) => {
 	return (
 		<SessionProvider session={session}>
-			<Layout>
-				<Component {...pageProps} />
-			</Layout>
+			<RecoilRoot>
+				<Layout>
+					<Component {...pageProps} />
+				</Layout>
+			</RecoilRoot>
 		</SessionProvider>
 	);
 };
