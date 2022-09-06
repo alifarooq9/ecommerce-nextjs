@@ -1,10 +1,12 @@
-import { FC, useState } from "react";
+import { FC, useEffect } from "react";
 import { UserIcon } from "@heroicons/react/24/outline";
 import { useRecoilState } from "recoil";
 import { userMenuState } from "../../recoil/globalStates";
 import { useSession, signOut } from "next-auth/react";
 import Auth from "../Auth";
 import { AnimatePresence } from "framer-motion";
+import toast from "react-hot-toast";
+import { useRouter } from "next/router";
 
 const User: FC = () => {
 	// current session
@@ -13,6 +15,32 @@ const User: FC = () => {
 
 	// use menu state
 	const [userMenu, setUserMenu] = useRecoilState<boolean>(userMenuState);
+
+	// logout
+	const logout = async () => {
+		const logoutToast = toast.loading("Logging out...");
+		await signOut({ redirect: false });
+		toast.success("Logged out successfully", { id: logoutToast });
+		setUserMenu(false);
+	};
+
+	// error handing
+	const router = useRouter();
+	const {
+		query: { error },
+	} = router;
+	const handleError = async () => {
+		if (error === "OAuthAccountNotLinked") {
+			toast.error("Account is linked to another provider.");
+			router.replace("/");
+		} else if (error) {
+			toast.error("Something went wrong.");
+			router.replace("/");
+		}
+	};
+	useEffect(() => {
+		handleError();
+	}, [error]);
 
 	return (
 		<div className="relative">
@@ -27,9 +55,7 @@ const User: FC = () => {
 
 			{userMenu && session && (
 				<div className="absolute">
-					<button onClick={() => signOut({ redirect: false })}>
-						Logout
-					</button>
+					<button onClick={logout}>Logout</button>
 				</div>
 			)}
 			<AnimatePresence>

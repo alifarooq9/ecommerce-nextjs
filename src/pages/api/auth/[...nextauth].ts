@@ -18,6 +18,14 @@ export const authOptions: NextAuthOptions = {
 			return session;
 		},
 	},
+	pages: {
+		signIn: "/",
+	},
+	logger: {
+		error(code, metadata) {
+			console.error(code, metadata);
+		},
+	},
 	secret: process.env.NEXTAUTH_SECRET,
 	// Configure one or more authentication providers
 	adapter: PrismaAdapter(prisma),

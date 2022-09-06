@@ -36,7 +36,6 @@ const SigninModel: FC = () => {
 		setLoginMethod({ ...loginMethod, github: true });
 		await signIn("github");
 	};
-
 	const handleDiscordLogin = async () => {
 		setLoginMethod({ ...loginMethod, discord: true });
 		await signIn("discord");
