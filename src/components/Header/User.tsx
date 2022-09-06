@@ -3,10 +3,12 @@ import { UserIcon } from "@heroicons/react/24/outline";
 import { useRecoilState } from "recoil";
 import { userMenuState } from "../../recoil/globalStates";
 import { useSession } from "next-auth/react";
+import Auth from "../Auth";
 
 const User: FC = () => {
 	// current session
 	const { data: session, status } = useSession();
+	// const session = true;
 
 	// use menu state
 	const [userMenu, setUserMenu] = useRecoilState<boolean>(userMenuState);
@@ -23,12 +25,7 @@ const User: FC = () => {
 			</button>
 
 			{userMenu && session && <div className="absolute">User Menu</div>}
-			{userMenu && !session && (
-				<>
-					<div className="bg-black fixed top-0 bottom-0 left-0 right-0 bg-opacity-70"></div>
-					
-				</>
-			)}
+			{userMenu && !session && <Auth />}
 		</div>
 	);
 };
