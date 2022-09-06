@@ -2,13 +2,14 @@ import { FC, useState } from "react";
 import { UserIcon } from "@heroicons/react/24/outline";
 import { useRecoilState } from "recoil";
 import { userMenuState } from "../../recoil/globalStates";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import Auth from "../Auth";
+import { AnimatePresence } from "framer-motion";
 
 const User: FC = () => {
 	// current session
-	const { data: session, status } = useSession();
-	// const session = true;
+	const { data: session } = useSession();
+	// console.log(session);
 
 	// use menu state
 	const [userMenu, setUserMenu] = useRecoilState<boolean>(userMenuState);
@@ -24,8 +25,16 @@ const User: FC = () => {
 				<UserIcon className="w-6 h-6" />
 			</button>
 
-			{userMenu && session && <div className="absolute">User Menu</div>}
-			{userMenu && !session && <Auth />}
+			{userMenu && session && (
+				<div className="absolute">
+					<button onClick={() => signOut({ redirect: false })}>
+						Logout
+					</button>
+				</div>
+			)}
+			<AnimatePresence>
+				{userMenu && !session && <Auth />}
+			</AnimatePresence>
 		</div>
 	);
 };
