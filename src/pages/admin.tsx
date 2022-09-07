@@ -13,8 +13,8 @@ const Admin: NextPage = () => {
 			"https://images.unsplash.com/photo-1633966887768-64f9a867bdba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=803&q=80",
 	};
 	const product = trpc.useMutation("product.add", {
-		onSuccess: (p) => {
-			console.log(p);
+		onSuccess: () => {
+			console.log("Success");
 		},
 		onError: (e) => {
 			console.log(e);

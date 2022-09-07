@@ -5,4 +5,9 @@ const userMenuState = atom({
 	default: false,
 });
 
-export { userMenuState };
+const miniCartState = atom({
+	key: "miniCartState",
+	default: false,
+});
+
+export { userMenuState, miniCartState };

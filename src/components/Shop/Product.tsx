@@ -10,7 +10,7 @@ const Product: FC<productTypes | any> = (props: { p: productTypes }) => {
 		>
 			<img
 				src={props.p.imageUrl}
-				className="group-hover:opacity-70 duration-300"
+				className="group-hover:opacity-70 duration-300 rounded"
 			/>
 			<div className="flex items-centers justify-between mt-4">
 				<h1 className="font-semibold opacity-80">{props.p.title}</h1>

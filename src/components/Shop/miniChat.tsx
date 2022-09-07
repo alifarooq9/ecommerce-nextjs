@@ -1,0 +1,192 @@
+import { FC, useState, useEffect } from "react";
+import { useCart } from "react-use-cart";
+import { useRecoilState } from "recoil";
+import { miniCartState } from "../../recoil/globalStates";
+import { motion } from "framer-motion";
+
+const MiniCart: FC = () => {
+	const [miniCart, setMiniCart] = useRecoilState(miniCartState);
+
+	const { cartTotal, items, updateItemQuantity } = useCart();
+
+	const [total, setTotal] = useState();
+	useEffect(() => {
+		setTotal(cartTotal.toFixed(2) as any);
+	}, [cartTotal]);
+
+	return (
+		<div className=" h-screen fixed overflow-auto z-50 right-0 top-0 w-screen max-w-md">
+			<div className="fixed inset-0 overflow-hidden">
+				<div className="absolute inset-0 overflow-hidden">
+					<motion.div
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
+						transition={{ duration: 0.15 }}
+						onClick={() => setMiniCart(false)}
+						className="w-full h-full bg-black absolute bg-opacity-50"
+					></motion.div>
+					<motion.div
+						initial={{ opacity: 0, x: "100%" }}
+						animate={{ opacity: 1, x: "0%" }}
+						exit={{ opacity: 0, x: "100%" }}
+						transition={{ duration: 0.3 }}
+						className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10"
+					>
+						<div className="pointer-events-auto w-screen max-w-md">
+							<div className="flex h-full flex-col overflow-y-auto bg-white">
+								<div className="flex-1 overflow-y-auto  px-4 sm:px-6">
+									<div className="flex sticky top-0 h-16 items-center bg-white justify-between">
+										<h2
+											className="text-lg font-medium text-gray-900"
+											id="slide-over-title"
+										>
+											Shopping cart
+										</h2>
+										<div className="ml-3 flex h-7 items-center">
+											<button
+												onClick={() =>
+													setMiniCart(false)
+												}
+												type="button"
+												className="-m-2 p-2 text-gray-400 hover:text-gray-500"
+											>
+												<span className="sr-only">
+													Close panel
+												</span>
+
+												<svg
+													className="h-6 w-6"
+													xmlns="http://www.w3.org/2000/svg"
+													fill="none"
+													viewBox="0 0 24 24"
+													strokeWidth="1.5"
+													stroke="currentColor"
+													aria-hidden="true"
+												>
+													<path
+														strokeLinecap="round"
+														strokeLinejoin="round"
+														d="M6 18L18 6M6 6l12 12"
+													/>
+												</svg>
+											</button>
+										</div>
+									</div>
+
+									<div className="mt-8">
+										<div className="flow-root">
+											<ul
+												role="list"
+												className="-my-6 divide-y divide-gray-200"
+											>
+												{items.map((i) => (
+													<li
+														key={i.id}
+														className="flex py-6"
+													>
+														<div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+															<img
+																src={i.imageUrl}
+																alt="Image"
+																className="h-full w-full object-cover object-center"
+															/>
+														</div>
+
+														<div className="ml-4 flex flex-1 flex-col">
+															<div>
+																<div className="flex justify-between text-base font-medium text-gray-900">
+																	<h3>
+																		<a href="#">
+																			Throwback
+																			Hip
+																			Bag
+																		</a>
+																	</h3>
+																	<p className="ml-4">
+																		$
+																		{
+																			i.price
+																		}
+																	</p>
+																</div>
+																<p className="mt-1 text-sm text-gray-500">
+																	{i.color}
+																</p>
+															</div>
+															<div className="flex flex-1 items-end justify-between text-sm">
+																<p className="text-gray-500">
+																	Qty{" "}
+																	{i.quantity}
+																</p>
+
+																<div className="flex">
+																	<button
+																		onClick={() =>
+																			updateItemQuantity(
+																				i.id,
+																				(i.quantity as number) -
+																					1
+																			)
+																		}
+																		type="button"
+																		className="font-medium text-blue-600 hover:text-blue-500"
+																	>
+																		Remove
+																	</button>
+																</div>
+															</div>
+														</div>
+													</li>
+												))}
+											</ul>
+										</div>
+									</div>
+								</div>
+
+								<div className="border-t border-gray-200 py-6 px-4 sm:px-6">
+									<div className="flex justify-between text-base font-medium text-gray-900">
+										<p>Subtotal</p>
+										<p>${total}</p>
+									</div>
+									<p className="mt-0.5 text-sm text-gray-500">
+										Shipping and taxes calculated at
+										checkout.
+									</p>
+									<button className="mt-6 w-full">
+										<a
+											href="#"
+											className="flex items-center justify-center rounded-md border border-transparent bg-blue-600 px-6 py-3 duration-300 text-base font text-white shadow-sm hover:bg-blue-700"
+										>
+											Checkout
+										</a>
+									</button>
+									<div className="mt-6 flex justify-center text-center text-sm text-gray-500">
+										<p>
+											or
+											<button
+												onClick={() =>
+													setMiniCart(false)
+												}
+												type="button"
+												className="font-medium ml-1 text-blue-600 hover:text-blue-700"
+											>
+												Continue Shopping
+												<span aria-hidden="true">
+													{" "}
+													&rarr;
+												</span>
+											</button>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</motion.div>
+				</div>
+			</div>
+		</div>
+	);
+};
+
+export default MiniCart;

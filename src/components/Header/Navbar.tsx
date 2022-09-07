@@ -5,7 +5,7 @@ import Router from "next/router";
 
 const Navbar: FC = () => {
 	return (
-		<nav className="px-6 w-screen fixed z-50 top-0 bg-white h-20 flex justify-center items-center">
+		<nav className="px-6 w-screen fixed z-40 top-0 bg-white h-20 flex justify-center items-center">
 			<section className="max-w-screen-xl w-full flex justify-between items-center space-x-10">
 				<h1
 					onClick={() => Router.push("/")}

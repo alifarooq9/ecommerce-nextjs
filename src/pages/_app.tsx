@@ -12,6 +12,7 @@ import "../styles/nprogress.css";
 import { RecoilRoot } from "recoil";
 import Router from "next/router";
 import nprogress from "nprogress";
+import { CartProvider } from "react-use-cart";
 
 Router.events.on("routeChangeStart", nprogress.start);
 Router.events.on("routeChangeComplete", nprogress.done);
@@ -24,9 +25,11 @@ const MyApp: AppType = ({
 	return (
 		<SessionProvider session={session}>
 			<RecoilRoot>
-				<Layout>
-					<Component {...pageProps} />
-				</Layout>
+				<CartProvider>
+					<Layout>
+						<Component {...pageProps} />
+					</Layout>
+				</CartProvider>
 			</RecoilRoot>
 		</SessionProvider>
 	);
@@ -67,5 +70,5 @@ export default withTRPC<AppRouter>({
 	/**
 	 * @link https://trpc.io/docs/ssr
 	 */
-	ssr: false,
+	ssr: true,
 })(MyApp);
