@@ -1,6 +1,5 @@
 import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
-import { useRouter } from "next/router";
 import { FC } from "react";
 import { trpc } from "../utils/trpc";
 import { useCart } from "react-use-cart";
@@ -21,7 +20,18 @@ const ProductDetail: FC<any> = ({ idQuery }) => {
 		},
 	]);
 
-	const { addItem, items } = useCart();
+	const { addItem } = useCart();
+	const handleAddItems = async () => {
+		await addItem({
+			id: data?.id as string,
+			title: data?.title,
+			price: data?.price as number,
+			imageUrl: [data?.imageUrl],
+			currency: data?.curreny,
+			description: data?.description,
+			quantity: 1,
+		});
+	};
 
 	return (
 		<>
@@ -61,7 +71,7 @@ const ProductDetail: FC<any> = ({ idQuery }) => {
 						</div>
 
 						<button
-							onClick={() => addItem(data as any)}
+							onClick={handleAddItems}
 							className="bg-blue-600 hover:bg-blue-700 duration-300 text-white mt-7 w-full h-14 rounded-lg"
 						>
 							Add to cart

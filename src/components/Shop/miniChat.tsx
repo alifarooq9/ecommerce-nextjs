@@ -3,6 +3,8 @@ import { useCart } from "react-use-cart";
 import { useRecoilState } from "recoil";
 import { miniCartState } from "../../recoil/globalStates";
 import { motion } from "framer-motion";
+import { useSession } from "next-auth/react";
+import Checkout from "./Checkout";
 
 const MiniCart: FC = () => {
 	const [miniCart, setMiniCart] = useRecoilState(miniCartState);
@@ -30,7 +32,7 @@ const MiniCart: FC = () => {
 						initial={{ opacity: 0, x: "100%" }}
 						animate={{ opacity: 1, x: "0%" }}
 						exit={{ opacity: 0, x: "100%" }}
-						transition={{ duration: 0.3 }}
+						transition={{ duration: 0.2 }}
 						className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10"
 					>
 						<div className="pointer-events-auto w-screen max-w-md">
@@ -87,7 +89,10 @@ const MiniCart: FC = () => {
 													>
 														<div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
 															<img
-																src={i.imageUrl}
+																src={
+																	i
+																		.imageUrl[0]
+																}
 																alt="Image"
 																className="h-full w-full object-cover object-center"
 															/>
@@ -153,14 +158,7 @@ const MiniCart: FC = () => {
 										Shipping and taxes calculated at
 										checkout.
 									</p>
-									<button className="mt-6 w-full">
-										<a
-											href="#"
-											className="flex items-center justify-center rounded-md border border-transparent bg-blue-600 px-6 py-3 duration-300 text-base font text-white shadow-sm hover:bg-blue-700"
-										>
-											Checkout
-										</a>
-									</button>
+									<Checkout />
 									<div className="mt-6 flex justify-center text-center text-sm text-gray-500">
 										<p>
 											or
