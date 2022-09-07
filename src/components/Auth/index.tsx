@@ -12,7 +12,9 @@ const Auth: FC = () => {
 	useEffect(() => {
 		if (typeof window !== "undefined") {
 			if (userMenu) {
-				document.body.style.overflow = "hidden";
+				document.body.style.overflowY = "hidden";
+			} else {
+				document.body.style.overflowY = "scroll";
 			}
 		}
 	}, [userMenu]);
