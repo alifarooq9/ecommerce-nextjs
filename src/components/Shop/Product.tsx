@@ -6,7 +6,7 @@ import Image from "next/image";
 const Product: FC<productTypes | any> = (props: { p: productTypes }) => {
 	return (
 		<div
-			onClick={() => Router.push(`/${props.p.id}`)}
+			onClick={() => Router.push(`/Product/${props.p.id}`)}
 			className="bg-white group cursor-pointer col-span-1"
 		>
 			<div className="relative h-96 w-ful">

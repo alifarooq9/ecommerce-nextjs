@@ -54,8 +54,32 @@ const User: FC = () => {
 			</button>
 
 			{userMenu && session && (
-				<div className="absolute">
-					<button onClick={logout}>Logout</button>
+				<div className="absolute bg-white shadow-xl px-12 w-screen max-w-xs flex flex-col justify-center py-10 right-0 rounded-3xl flex-1 divide-y space-y-5">
+					<section className="flex flex-col justify-center w-full">
+						<h1 className="flex-grow text-xl font-semibold text-center">
+							{session?.user?.name}
+						</h1>
+						<p className="text-sm opacity-70 text-center">
+							{session?.user?.email}
+						</p>
+					</section>
+					<section className="flex flex-col py-5 items-center space-y-2">
+						<button
+							onClick={() => {
+								router.push("/orders");
+								setUserMenu(false);
+							}}
+							className="py-3 w-36 rounded-2xl border-2 font-semibold border-black text-opacity-60 text-black hover:text-opacity-100 hover:border-opacity-100 duration-300 border-opacity-10 "
+						>
+							Orders
+						</button>
+						<button
+							onClick={logout}
+							className="py-3 w-36 rounded-2xl border-2 font-semibold border-red-500 text-red-500 text-opacity-60 hover:text-opacity-100 hover:border-opacity-100 duration-300 border-opacity-10 "
+						>
+							Logout
+						</button>
+					</section>
 				</div>
 			)}
 			<AnimatePresence>

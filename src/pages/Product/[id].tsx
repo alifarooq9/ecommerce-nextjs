@@ -1,7 +1,7 @@
 import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
 import { FC } from "react";
-import { trpc } from "../utils/trpc";
+import { trpc } from "../../utils/trpc";
 import { useCart } from "react-use-cart";
 import Image from "next/image";
 
@@ -51,7 +51,7 @@ const ProductDetail: FC<any> = ({ idQuery }) => {
 						style={{ height: "500px" }}
 					>
 						<Image
-							src={data?.imageUrl}
+							src={data?.imageUrl as string}
 							layout="fill"
 							className="rounded-md"
 							objectFit="cover"

@@ -21,6 +21,7 @@
 		"@trpc/react": "^9.27.2",
 		"@trpc/server": "^9.27.2",
 		"@types/nprogress": "^0.2.0",
+		"date-fns": "^2.29.2",
 		"framer-motion": "^7.2.1",
 		"next": "12.2.5",
 		"next-auth": "^4.10.3",

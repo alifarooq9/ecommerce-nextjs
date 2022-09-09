@@ -131,11 +131,11 @@ const Success: NextPage = ({ session_id }: any) => {
 									.slice(-2)}`}
 							</p>
 							<p className="font-bold opacity-70 text-base pt-0.5">
-								<span className="font-medium">Shipping: </span>$
+								<span className="font-medium">Shipping: </span>
 								{data.data?.session?.shipping_cost
 									?.amount_subtotal === 0
 									? "Free"
-									: `${data.data?.session?.shipping_cost?.amount_subtotal
+									: `$${data.data?.session?.shipping_cost?.amount_subtotal
 											?.toString()
 											.slice(
 												0,
