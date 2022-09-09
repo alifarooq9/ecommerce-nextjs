@@ -131,6 +131,17 @@ const Success: NextPage = ({ session_id }: any) => {
 									.slice(-2)}`}
 							</p>
 							<p className="font-bold opacity-70 text-base pt-0.5">
+								<span className="font-medium">Discount: </span>$
+								{`${data.data?.session?.total_details?.amount_discount
+									?.toString()
+									.slice(
+										0,
+										-2
+									)}.${data.data?.session?.total_details?.amount_discount
+									?.toString()
+									.slice(-2)}`}
+							</p>
+							<p className="font-bold opacity-70 text-base pt-0.5">
 								<span className="font-medium">Shipping: </span>
 								{data.data?.session?.shipping_cost
 									?.amount_subtotal === 0
@@ -144,17 +155,7 @@ const Success: NextPage = ({ session_id }: any) => {
 											?.toString()
 											.slice(-2)}`}
 							</p>
-							<p className="font-bold opacity-70 text-base pt-0.5">
-								<span className="font-medium">Discount: </span>$
-								{`${data.data?.session?.total_details?.amount_discount
-									?.toString()
-									.slice(
-										0,
-										-2
-									)}.${data.data?.session?.total_details?.amount_discount
-									?.toString()
-									.slice(-2)}`}
-							</p>
+
 							<p className="font-bold opacity-70 text-base pt-0.5">
 								<span className="font-medium">
 									Total Cost:{" "}
