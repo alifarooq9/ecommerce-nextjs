@@ -3,6 +3,7 @@ import Head from "next/head";
 import { FC } from "react";
 import { trpc } from "../utils/trpc";
 import { useCart } from "react-use-cart";
+import Image from "next/image";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
 	return {
@@ -36,7 +37,7 @@ const ProductDetail: FC<any> = ({ idQuery }) => {
 	return (
 		<>
 			<Head>
-				<title>Clothing</title>
+				<title>Clothing - {data?.title}</title>
 				<meta
 					name="description"
 					content="This a ecommerce app with nextjs"
@@ -45,8 +46,16 @@ const ProductDetail: FC<any> = ({ idQuery }) => {
 			</Head>
 			<main className="w-screen min-h-screen flex flex-col justify-center items-center py-28">
 				<div className="w-full max-w-screen-lg grid grid-cols-1 md:grid-cols-2 pb-10 gap-10 px-7">
-					<section className="flex justify-center items-center">
-						<img src={data?.imageUrl} className="rounded-md" />
+					<section
+						className="flex justify-center items-center relative"
+						style={{ height: "500px" }}
+					>
+						<Image
+							src={data?.imageUrl}
+							layout="fill"
+							className="rounded-md"
+							objectFit="cover"
+						/>
 					</section>
 					<section className="flex flex-col md:justify-between">
 						<div>
@@ -60,7 +69,7 @@ const ProductDetail: FC<any> = ({ idQuery }) => {
 								${data?.price}
 							</h4>
 							<p className="mt-6">Color</p>
-							<div className="mt-2 bg-gray-300 border border-gray-500 w-8 h-8 rounded-full"></div>
+							<div className="mt-2 bg-gray-800 border border-gray-500 w-8 h-8 rounded-full"></div>
 							<p className="mt-4 opacity-80">
 								{data?.description}
 							</p>

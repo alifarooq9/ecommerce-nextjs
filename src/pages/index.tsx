@@ -19,7 +19,7 @@ const Home: NextPage = () => {
 			</Head>
 
 			<main className="min-h-screen flex justify-center">
-				<div className="max-w-screen-lg px-6">
+				<div className="max-w-screen-lg w-screen px-6 ">
 					<Landing />
 					<Products />
 				</div>

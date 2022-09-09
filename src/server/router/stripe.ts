@@ -43,10 +43,10 @@ export const stripeRouter = createProtectedRouter()
 				});
 
 				if (orderExists) {
-					return { session, order: orderExists };
+					return { session, orders: orderExists };
 				}
 
-				const order = await ctx.prisma.orders.create({
+				const orders = await ctx.prisma.orders.create({
 					data: {
 						id: session.id,
 						customer: session.customer_details as any,
@@ -60,7 +60,7 @@ export const stripeRouter = createProtectedRouter()
 					},
 				});
 
-				return { session, order };
+				return { session, orders };
 			} catch (error: any) {
 				return { error: error.message };
 			}

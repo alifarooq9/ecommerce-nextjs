@@ -3,14 +3,15 @@ import { trpc } from "../utils/trpc";
 
 const Admin: NextPage = () => {
 	const p = {
-		id: 6,
+		id: 1,
 		color: "Black",
-		title: "Black T-shirt",
-		description: "This is a black t shirt from clothing store.",
-		price: 19.99,
+		title: "Black T-Shirt",
+		description:
+			"The t-shirts for boys are always trending in the men's fashion zones. From the lightest to the darkest colors, exquisite design, and patterns.",
+		price: 14.99,
 		curreny: "usd",
 		imageUrl:
-			"https://images.unsplash.com/photo-1633966887768-64f9a867bdba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=803&q=80",
+			"https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
 	};
 	const product = trpc.useMutation("product.add", {
 		onSuccess: () => {
