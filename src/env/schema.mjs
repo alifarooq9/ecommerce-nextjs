@@ -26,6 +26,7 @@ export const serverSchema = z.object({
 export const clientSchema = z.object({
 	// NEXT_PUBLIC_BAR: z.string(),
 	NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: z.string(),
+	NEXT_PUBLIC_ORIGIN: z.string(),
 });
 
 /**
@@ -38,4 +39,5 @@ export const clientEnv = {
 	// NEXT_PUBLIC_BAR: process.env.NEXT_PUBLIC_BAR,
 	NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY:
 		process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
+	NEXT_PUBLIC_ORIGIN: process.env.NEXT_PUBLIC_ORIGIN,
 };

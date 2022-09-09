@@ -14,12 +14,11 @@ const Checkout: FC = () => {
 	const [userMenu, setUserMenu] = useRecoilState(userMenuState);
 	const [miniCart, setMiniCart] = useRecoilState(miniCartState);
 
-	const { items } = useCart();
+	const { items, emptyCart } = useCart();
 
 	const { mutate } = trpc.useMutation("strip.pay", {
 		onSuccess: (obj: any) => {
 			Router.push(obj?.url);
-			setMiniCart(false);
 		},
 	});
 	const [paynowloading, setPaynowLoading] = useState<boolean>(false);
@@ -36,12 +35,12 @@ const Checkout: FC = () => {
 	return (
 		<button
 			onClick={handleCheckout}
-			disabled={paynowloading}
+			disabled={paynowloading || items.length === 0}
 			className="mt-6 w-full"
 		>
-			<span className="flex items-center justify-center rounded-md border border-transparent bg-blue-600 px-6 h-14 duration-300 text-base font text-white shadow-sm hover:bg-blue-700">
+			<span className="flex items-center justify-center  rounded-md border border-transparent bg-blue-600 px-6 h-14 duration-300 text-base font text-white shadow-sm hover:bg-blue-700">
 				{paynowloading && <Image src={loadingSvg} alt="loading" />}
-				{session && !paynowloading && "Pay now"}
+				{session && !paynowloading && "Checkout"}
 				{!session && !paynowloading && "Sign in to checkout"}
 			</span>
 		</button>

@@ -103,9 +103,9 @@ const MiniCart: FC = () => {
 																<div className="flex justify-between text-base font-medium text-gray-900">
 																	<h3>
 																		<a href="#">
-																			Throwback
-																			Hip
-																			Bag
+																			{
+																				i.title
+																			}
 																		</a>
 																	</h3>
 																	<p className="ml-4">

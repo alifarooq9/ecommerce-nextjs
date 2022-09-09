@@ -62,11 +62,7 @@ const ProductDetail: FC<any> = ({ idQuery }) => {
 							<p className="mt-6">Color</p>
 							<div className="mt-2 bg-gray-300 border border-gray-500 w-8 h-8 rounded-full"></div>
 							<p className="mt-4 opacity-80">
-								Clothing (also known as clothes, apparel, and
-								attire) are items worn on the body. Typically,
-								clothing is made of fabrics or textiles, but
-								over time it has included garments made from
-								animal skin.
+								{data?.description}
 							</p>
 						</div>
 
