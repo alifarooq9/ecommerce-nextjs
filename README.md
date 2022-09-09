@@ -1,10 +1,10 @@
 # Ecommerce
 this is a ecommerce app example build with nextjs, typescript, trpc, prisma, mongodb.
 
-##view live
+## view live
 htt
 
-##installation
+## installation
  
 install node_modules
 ```sh
