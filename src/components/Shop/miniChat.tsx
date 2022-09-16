@@ -36,11 +36,11 @@ const MiniCart: FC = () => {
 						className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10"
 					>
 						<div className="pointer-events-auto w-screen max-w-md">
-							<div className="flex h-full flex-col overflow-y-auto bg-white">
+							<div className="flex h-full flex-col overflow-y-auto bg-zinc-900">
 								<div className="flex-1 overflow-y-auto  px-4 sm:px-6">
-									<div className="flex sticky top-0 h-16 items-center bg-white justify-between">
+									<div className="flex sticky top-0 h-16 items-center bg-zinc-900 justify-between">
 										<h2
-											className="text-lg font-medium text-gray-900"
+											className="text-lg font-medium"
 											id="slide-over-title"
 										>
 											Shopping cart
@@ -51,7 +51,7 @@ const MiniCart: FC = () => {
 													setMiniCart(false)
 												}
 												type="button"
-												className="-m-2 p-2 text-gray-400 hover:text-gray-500"
+												className="-m-2 p-2 text-gray-300 hover:text-gray-100"
 											>
 												<span className="sr-only">
 													Close panel
@@ -152,16 +152,16 @@ const MiniCart: FC = () => {
 								</div>
 
 								<div className="border-t border-gray-200 py-6 px-4 sm:px-6">
-									<div className="flex justify-between text-base font-medium text-gray-900">
+									<div className="flex justify-between text-base font-medium text-gray-100">
 										<p>Subtotal</p>
 										<p>${total}</p>
 									</div>
-									<p className="mt-0.5 text-sm text-gray-500">
+									<p className="mt-0.5 text-sm text-gray-400">
 										Shipping and taxes calculated at
 										checkout.
 									</p>
 									<Checkout />
-									<div className="mt-6 flex justify-center text-center text-sm text-gray-500">
+									<div className="mt-6 flex justify-center text-center text-sm text-gray-400">
 										<p>
 											or
 											<button

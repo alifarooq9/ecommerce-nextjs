@@ -3,8 +3,14 @@ import { FC, ReactNode } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Header/Navbar";
 import { Toaster } from "react-hot-toast";
+import { AnimatePresence } from "framer-motion";
+import MiniCart from "../components/Shop/miniChat";
+import { useRecoilValue } from "recoil";
+import cartState from "../recoil/cartState";
 
 const Layout: FC<{ children: ReactNode }> = ({ children }) => {
+	const miniCart = useRecoilValue(cartState);
+
 	return (
 		<>
 			<Head>
@@ -13,6 +19,7 @@ const Layout: FC<{ children: ReactNode }> = ({ children }) => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<main className="overflow-x-hidden">
+				<AnimatePresence>{miniCart && <MiniCart />}</AnimatePresence>
 				<Toaster />
 				<Navbar />
 				{children}
