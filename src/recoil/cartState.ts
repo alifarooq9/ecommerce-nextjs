@@ -4,3 +4,5 @@ const cartState = atom({
 	key: "cartState",
 	default: false,
 });
+
+export default cartState;

@@ -1,5 +1,7 @@
 import { FC } from "react";
 import Router from "next/router";
+import ShoppingCart from "./ShoppingCart";
+import User from "./User";
 
 const Navbar: FC = () => {
 	return (
@@ -12,8 +14,8 @@ const Navbar: FC = () => {
 					Clothing.
 				</h1>
 				<div className=" col-span-1 flex justify-end items-center">
-					{/* <ShoppingCart /> */}
-					{/* <User /> */}
+					<ShoppingCart />
+					<User />
 					<button className="hidden bg-bg text-blue-600 drop-shadow-md h-12 w-32 rounded-2xl hover:bg-gray-100 transition-colors duration-300 font-medium">
 						Sign in
 					</button>

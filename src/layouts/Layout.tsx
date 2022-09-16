@@ -2,6 +2,7 @@ import Head from "next/head";
 import { FC, ReactNode } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Header/Navbar";
+import { Toaster } from "react-hot-toast";
 
 const Layout: FC<{ children: ReactNode }> = ({ children }) => {
 	return (
@@ -12,6 +13,7 @@ const Layout: FC<{ children: ReactNode }> = ({ children }) => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<main className="">
+				<Toaster />
 				<Navbar />
 				{children}
 				<Footer />
