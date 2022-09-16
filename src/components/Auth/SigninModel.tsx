@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { FC } from "react";
-import googleIcon from "../../../public/google.svg";
 import discordIcon from "../../../public/discord.svg";
 import githubIcon from "../../../public/github.svg";
 import { motion } from "framer-motion";
@@ -25,12 +24,6 @@ const SigninModel: FC = () => {
 		github: false,
 		discord: false,
 	});
-
-	//handle google login
-	const handleGoogleLogin = async () => {
-		setLoginMethod({ ...loginMethod, google: true });
-		await signIn("google");
-	};
 
 	const handleGithubLogin = async () => {
 		setLoginMethod({ ...loginMethod, github: true });
@@ -60,27 +53,6 @@ const SigninModel: FC = () => {
 
 				<h1 className="font-bold text-3xl mt-5">Sign in</h1>
 				<div className="mt-7 space-y-3">
-					<button
-						onClick={handleGoogleLogin}
-						disabled={loginMethod.google}
-						className="drop-shadow-lg shadow-black hover:bg-gray-700 duration-300 bg-gray-900 w-full h-16 rounded-3xl flex justify-center items-center space-x-3"
-					>
-						{loginMethod.google ? (
-							<Image src={loadingSvg} alt="loading" />
-						) : (
-							<>
-								<Image
-									src={googleIcon}
-									alt="google"
-									quality={100}
-									width={"28px"}
-								/>
-								<span className="opacity-50 font-medium">
-									Log in with google
-								</span>
-							</>
-						)}
-					</button>
 					<button
 						onClick={handleDiscordLogin}
 						disabled={loginMethod.discord}

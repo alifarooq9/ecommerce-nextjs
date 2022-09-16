@@ -7,6 +7,7 @@ import Auth from "../Auth";
 import { AnimatePresence } from "framer-motion";
 import toast from "react-hot-toast";
 import { useRouter } from "next/router";
+import { motion } from "framer-motion";
 
 const User: FC = () => {
 	// current session
@@ -34,6 +35,7 @@ const User: FC = () => {
 			toast.error("Account is linked to another provider.");
 			router.replace("/");
 		} else if (error) {
+			console.log(error);
 			toast.error("Something went wrong.");
 			router.replace("/");
 		}
@@ -54,7 +56,12 @@ const User: FC = () => {
 			</button>
 
 			{userMenu && session && (
-				<div className="absolute bg-gray-800 shadow-xl px-12 w-screen max-w-xs flex flex-col justify-center py-10 right-0 rounded-3xl flex-1 divide-y space-y-5">
+				<motion.div
+					animate={{ y: "0px", opacity: 1 }}
+					initial={{ y: "30px", opacity: 0 }}
+					transition={{ duration: 0.15 }}
+					className="absolute bg-gray-800 shadow-xl px-12 w-screen max-w-xs flex flex-col justify-center py-10 right-0 rounded-3xl flex-1 divide-y divide-white divide-opacity-20 space-y-5"
+				>
 					<section className="flex flex-col justify-center w-full">
 						<h1 className="flex-grow text-xl font-semibold text-center">
 							{session?.user?.name}
@@ -69,18 +76,18 @@ const User: FC = () => {
 								router.push("/orders");
 								setUserMenu(false);
 							}}
-							className="py-3 w-36 rounded-2xl border-2 font-semibold border-black text-opacity-60 text-black hover:text-opacity-100 hover:border-opacity-100 duration-300 border-opacity-10 "
+							className="py-3 w-36 rounded-2xl border-2 font-semibold border-white text-opacity-70 text-white hover:text-opacity-100 hover:border-opacity-100 duration-300 border-opacity-30 "
 						>
 							Orders
 						</button>
 						<button
 							onClick={logout}
-							className="py-3 w-36 rounded-2xl border-2 font-semibold border-red-500 text-red-500 text-opacity-60 hover:text-opacity-100 hover:border-opacity-100 duration-300 border-opacity-10 "
+							className="py-3 w-36 rounded-2xl border-2 font-semibold border-red-500 text-red-500 text-opacity-70 hover:text-opacity-100 hover:border-opacity-100 duration-300 border-opacity-30 "
 						>
 							Logout
 						</button>
 					</section>
-				</div>
+				</motion.div>
 			)}
 			<AnimatePresence>
 				{userMenu && !session && <Auth />}
