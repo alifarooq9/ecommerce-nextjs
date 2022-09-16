@@ -9,6 +9,13 @@ import Layout from "../layouts/Layout";
 import type { AppRouter } from "../server/router";
 import "../styles/globals.css";
 import { RecoilRoot } from "recoil";
+import Router from "next/router";
+import nprogress from "nprogress";
+import { CartProvider } from "react-use-cart";
+
+Router.events.on("routeChangeStart", nprogress.start);
+Router.events.on("routeChangeComplete", nprogress.done);
+Router.events.on("routeChangeError", nprogress.done);
 
 const MyApp: AppType = ({
 	Component,
@@ -17,9 +24,11 @@ const MyApp: AppType = ({
 	return (
 		<SessionProvider session={session}>
 			<RecoilRoot>
-				<Layout>
-					<Component {...pageProps} />
-				</Layout>
+				<CartProvider>
+					<Layout>
+						<Component {...pageProps} />
+					</Layout>
+				</CartProvider>
 			</RecoilRoot>
 		</SessionProvider>
 	);

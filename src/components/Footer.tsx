@@ -2,7 +2,7 @@ import { FC } from "react";
 
 const Footer: FC = () => {
 	return (
-		<footer className="mt-28 bg-gray-50" aria-labelledby="footer-heading">
+		<footer className="mt-28 bg-zinc-900" aria-labelledby="footer-heading">
 			<h2 id="footer-heading" className="sr-only">
 				Footer
 			</h2>

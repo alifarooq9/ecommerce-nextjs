@@ -40,7 +40,7 @@ const SigninModel: FC = () => {
 			animate={{ opacity: 1, y: "0px" }}
 			exit={{ opacity: 0, y: "-50px" }}
 			transition={{ duration: 0.15 }}
-			className="bg-gray-800 relative rounded-3xl select-none z-20 px-8 py-10 sm:px-14 sm:py-14 w-full max-w-md"
+			className="bg-gray-800 relative rounded-3xl select-none z-20 px-8 py-10 sm:px-14 sm:py-14 w-screen max-w-md"
 		>
 			<div>
 				<h5 className="opacity-40">MatteBlack</h5>
