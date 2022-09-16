@@ -6,7 +6,7 @@ import Image from "next/image";
 const Product: FC<productTypes | any> = (props: { p: productTypes }) => {
 	return (
 		<div
-			onClick={() => Router.push(`/Product/${props.p.id}`)}
+			onClick={() => Router.push(`/${props.p.id}`)}
 			className="bg-transparent group cursor-pointer col-span-1"
 		>
 			<div className="relative h-96 w-ful">
@@ -19,7 +19,6 @@ const Product: FC<productTypes | any> = (props: { p: productTypes }) => {
 					alt="Product images"
 					blurDataURL={props.p.image}
 					placeholder="blur"
-					
 				/>
 			</div>
 			<div className="flex items-centers justify-between mt-4">

@@ -49,6 +49,7 @@ model User {
     sessions      Session[]
     createdAt     DateTime  @default(now())
     updatedAt     DateTime  @updatedAt
+    orders        orders[]
 }
 
 model VerificationToken {
@@ -68,4 +69,15 @@ model products {
     image       String
     createdAt   DateTime @default(now())
     updatedAt   DateTime @updatedAt
+}
+
+model orders {
+    id            String   @id @default(cuid())
+    items         Json
+    customer      Json
+    totalAmount   Json
+    createdAt     DateTime @default(now())
+    stripeSession Json
+    userId        String
+    user          User     @relation(fields: [userId], references: [id])
 }

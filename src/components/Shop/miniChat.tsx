@@ -80,21 +80,22 @@ const MiniCart: FC = () => {
 										<div className="flow-root">
 											<ul
 												role="list"
-												className="-my-6 divide-y divide-gray-200"
+												className="-my-6 divide-y divide-gray-500"
 											>
 												{items.map((i) => (
 													<li
 														key={i.id}
 														className="flex py-6"
 													>
-														<div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+														<div className="h-24 relative w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-700">
 															<Image
 																src={i.image}
-																quality={50}
+																quality={30}
 																alt="Product images"
 																blurDataURL={
 																	i.image
 																}
+																layout="fill"
 																placeholder="blur"
 																className="h-full w-full object-cover object-center"
 															/>
@@ -102,7 +103,7 @@ const MiniCart: FC = () => {
 
 														<div className="ml-4 flex flex-1 flex-col">
 															<div>
-																<div className="flex justify-between text-base font-medium text-gray-900">
+																<div className="flex justify-between text-base font-medium text-gray-200">
 																	<h3>
 																		<a href="#">
 																			{
@@ -117,7 +118,7 @@ const MiniCart: FC = () => {
 																		}
 																	</p>
 																</div>
-																<p className="mt-1 text-sm text-gray-500">
+																<p className="mt-1 text-sm text-gray-300">
 																	{i.color}
 																</p>
 															</div>

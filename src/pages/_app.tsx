@@ -8,6 +8,7 @@ import superjson from "superjson";
 import Layout from "../layouts/Layout";
 import type { AppRouter } from "../server/router";
 import "../styles/globals.css";
+import "../styles/nprogress.css";
 import { RecoilRoot } from "recoil";
 import Router from "next/router";
 import nprogress from "nprogress";
