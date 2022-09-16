@@ -50,7 +50,7 @@ const SigninModel: FC = () => {
 			className="bg-gray-800 relative rounded-3xl select-none z-20 px-8 py-10 sm:px-14 sm:py-14 w-full max-w-md"
 		>
 			<div>
-				<h5 className="font-medium opacity-40">Clothing. Ecommerce</h5>
+				<h5 className="opacity-40">MatteBlack</h5>
 				<button
 					onClick={() => setUserMenu(false)}
 					className="w-8 h-8 absolute top-7 right-8 opacity-40 hover:opacity-100 duration-300"

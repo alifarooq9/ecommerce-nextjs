@@ -11,7 +11,7 @@ const Navbar: FC = () => {
 					onClick={() => Router.push("/")}
 					className="font-bold text-2xl cursor-pointer"
 				>
-					Clothing.
+					MatteBlack
 				</h1>
 				<div className=" col-span-1 flex justify-end items-center">
 					<ShoppingCart />
