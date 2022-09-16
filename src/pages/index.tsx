@@ -1,6 +1,5 @@
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-import { trpc } from "../utils/trpc";
 import { createSSGHelpers } from "@trpc/react/ssg";
 import { appRouter } from "../server/router";
 import superjson from "superjson";
@@ -10,9 +9,6 @@ import Landing from "../components/Landing";
 import Products from "../components/Shop/Products";
 
 const Home: NextPage = () => {
-	const products = trpc.useQuery(["products.getAll"]);
-	console.log(products);
-
 	return (
 		<>
 			<Head>
