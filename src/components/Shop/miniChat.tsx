@@ -89,11 +89,15 @@ const MiniCart: FC = () => {
 													>
 														<div className="h-24 relative w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-700">
 															<Image
-																src={i.image}
+																src={
+																	i
+																		.imageUrl[0]
+																}
 																quality={30}
 																alt="Product images"
 																blurDataURL={
-																	i.image
+																	i
+																		.imageUrl[0]
 																}
 																layout="fill"
 																placeholder="blur"

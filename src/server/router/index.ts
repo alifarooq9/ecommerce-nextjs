@@ -3,12 +3,12 @@ import { createRouter } from "./context";
 import superjson from "superjson";
 
 import { exampleRouter } from "./products";
-import { protectedExampleRouter } from "./protected-example-router";
+import { stripeRouter } from "./stripe";
 
 export const appRouter = createRouter()
 	.transformer(superjson)
 	.merge("products.", exampleRouter)
-	.merge("stripe", protectedExampleRouter);
+	.merge("stripe", stripeRouter);
 
 // export type definition of API
 export type AppRouter = typeof appRouter;

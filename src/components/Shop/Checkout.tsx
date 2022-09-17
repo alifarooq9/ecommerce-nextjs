@@ -17,16 +17,16 @@ const Checkout: FC = () => {
 
 	const { items, emptyCart } = useCart();
 
-	// const { mutate } = trpc.useMutation("strip.pay", {
-	// 	onSuccess: (obj: any) => {
-	// 		Router.push(obj?.url);
-	// 	},
-	// });
+	const { mutate } = trpc.useMutation("stripe.pay", {
+		onSuccess: (obj: any) => {
+			Router.push(obj?.url);
+		},
+	});
 	const [paynowloading, setPaynowLoading] = useState<boolean>(false);
 	const handleCheckout = async () => {
 		if (session) {
 			setPaynowLoading(true);
-			// mutate({ items: items as any });
+			mutate({ items: items as any });
 		} else {
 			setMiniCart(false);
 			setUserMenu(true);

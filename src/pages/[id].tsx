@@ -17,11 +17,11 @@ const ProductsDetails: NextPage = ({
 
 	const { addItem } = useCart();
 	const handleAddItems = async () => {
-		await addItem({
+		addItem({
 			id: data?.id as string,
 			title: data?.title,
 			price: data?.price as number,
-			image: data?.image,
+			imageUrl: [data?.image],
 			currency: "usd",
 			color: data?.color,
 			description: data?.description,
