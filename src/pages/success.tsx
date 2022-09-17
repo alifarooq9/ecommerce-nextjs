@@ -4,8 +4,9 @@ import { useCart } from "react-use-cart";
 import Head from "next/head";
 import { CheckBadgeIcon } from "@heroicons/react/24/solid";
 import Router from "next/router";
-import { useEffect, useState } from "react";
-import Image from "next/image";
+import { useEffect } from "react";
+import dynamic from "next/dynamic";
+const Image = dynamic(() => import("next/image"));
 
 export const getServerSideProps: GetServerSideProps = async (
 	context: GetServerSidePropsContext

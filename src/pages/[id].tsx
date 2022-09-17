@@ -1,7 +1,8 @@
 import { GetStaticProps, NextPage, InferGetStaticPropsType } from "next";
 import { trpc } from "../utils/trpc";
 import { useCart } from "react-use-cart";
-import Image from "next/image";
+import dynamic from "next/dynamic";
+const Image = dynamic(() => import("next/image"));
 import Head from "next/head";
 import { createContextInner } from "../server/router/context";
 import { getSession } from "next-auth/react";

@@ -7,7 +7,8 @@ import userMenuState from "../../recoil/userMenuState";
 import { trpc } from "../../utils/trpc";
 import Router from "next/router";
 import loadingSvg from "../../../public/loaderWhite.svg";
-import Image from "next/image";
+import dynamic from "next/dynamic";
+const Image = dynamic(() => import("next/image"));
 
 const Checkout: FC = () => {
 	const { data: session } = useSession();

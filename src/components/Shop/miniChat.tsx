@@ -4,7 +4,8 @@ import { useRecoilState } from "recoil";
 import cartState from "../../recoil/cartState";
 import { motion } from "framer-motion";
 import Checkout from "./Checkout";
-import Image from "next/image";
+import dynamic from "next/dynamic";
+const Image = dynamic(() => import("next/image"));
 
 const MiniCart: FC = () => {
 	const [miniCart, setMiniCart] = useRecoilState(cartState);

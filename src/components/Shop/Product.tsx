@@ -1,7 +1,8 @@
 import { FC } from "react";
 import { productTypes } from "./Products";
 import Router from "next/router";
-import Image from "next/image";
+import dynamic from "next/dynamic";
+const Image = dynamic(() => import("next/image"));
 
 const Product: FC<productTypes | any> = (props: { p: productTypes }) => {
 	return (

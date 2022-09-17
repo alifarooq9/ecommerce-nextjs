@@ -2,7 +2,8 @@ import { NextPage } from "next";
 import Head from "next/head";
 import { trpc } from "../utils/trpc";
 import { format } from "date-fns";
-import Image from "next/image";
+import dynamic from "next/dynamic";
+const Image = dynamic(() => import("next/image"));
 
 const Orders: NextPage = () => {
 	const data = trpc.useQuery(["order.getall"]);
