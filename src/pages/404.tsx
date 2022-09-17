@@ -6,7 +6,7 @@ const FourOhFour: NextPage = () => {
 	return (
 		<>
 			<Head>
-				<title>Clothing - 404 not found</title>
+				<title>MatteBlack - 404 not found</title>
 				<meta
 					name="description"
 					content="This a ecommerce app with nextjs"

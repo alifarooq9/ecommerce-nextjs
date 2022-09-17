@@ -55,7 +55,7 @@ export const stripeRouter = createProtectedRouter()
 							shipping: session.shipping_cost?.amount_subtotal,
 							amount: session.amount_subtotal,
 						},
-						items: input.allItems,
+						items: JSON.stringify(input.allItems),
 						stripeSession: session as any,
 						userId: ctx.session.user.id,
 					},

@@ -45,8 +45,6 @@ const Success: NextPage = ({ session_id }: any) => {
 		}
 	}, [data.isFetching, data.data]);
 
-	console.log(data);
-
 	return (
 		<>
 			<Head>
@@ -77,26 +75,30 @@ const Success: NextPage = ({ session_id }: any) => {
 						View all orders
 					</button>
 				</div>
-				<div className="border mt-4 p-5 rounded-2xl divide-y">
+				<div className="border mt-4 p-5 rounded-2xl divide-y divide-gray-700 border-gray-700">
 					{data.isLoading && (
 						<h1 className="text-center">Loading...</h1>
 					)}
-					{data.data?.orders &&
-						data.data?.orders?.items.map(
+					{data.data?.orders?.items &&
+						(JSON.parse(data.data?.orders?.items as any).map(
 							(item: any) => (
 								<div key={item?.id}>
 									<li className="flex py-4">
-										<div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+										<div className="h-24 w-24 flex-shrink-0 relative overflow-hidden rounded-md border border-gray-800">
 											<Image
 												src={item?.imageUrl[0]}
 												alt="Image"
+												quality={30}
+												placeholder="blur"
+												blurDataURL={item?.imageUrl[0]}
+												layout="fill"
 												className="h-full w-full object-cover object-center"
 											/>
 										</div>
 
 										<div className="ml-4 flex flex-1 flex-col">
 											<div>
-												<div className="flex justify-between text-base font-medium text-gray-900">
+												<div className="flex justify-between text-base font-medium text-gray-100">
 													<h3>
 														<a href="#">
 															{item?.title}
@@ -114,7 +116,7 @@ const Success: NextPage = ({ session_id }: any) => {
 												{item?.description}
 											</p>
 											<div className="flex flex-1 items-end justify-between text-sm">
-												<p className="text-gray-500">
+												<p className="text-gray-300">
 													Qty {item?.quantity}
 												</p>
 											</div>
@@ -122,7 +124,7 @@ const Success: NextPage = ({ session_id }: any) => {
 									</li>
 								</div>
 							)
-						)}
+						) as any)}
 					{data.isFetched && (
 						<div className="pt-5 flex flex-col items-end">
 							<p className="font-bold opacity-70 text-base pt-0.5">

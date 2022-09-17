@@ -32,7 +32,7 @@ const ProductsDetails: NextPage = ({
 	return (
 		<>
 			<Head>
-				<title>Clothing - {data?.title}</title>
+				<title>MatteBlack - {data?.title}</title>
 				<meta
 					name="description"
 					content="This a ecommerce app with nextjs"
