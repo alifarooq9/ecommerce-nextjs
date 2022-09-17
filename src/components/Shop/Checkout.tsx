@@ -37,7 +37,7 @@ const Checkout: FC = () => {
 		<button
 			onClick={handleCheckout}
 			disabled={paynowloading || items.length === 0}
-			className="mt-6 w-full"
+			className="mt-6 w-full 2"
 		>
 			<span className="flex items-center justify-center  rounded-md border border-transparent bg-blue-600 px-6 h-14 duration-300 text-base font text-white shadow-sm hover:bg-blue-700">
 				{paynowloading && <Image src={loadingSvg} alt="loading" />}
