@@ -2,11 +2,10 @@ import { NextPage } from "next";
 import Head from "next/head";
 import { trpc } from "../utils/trpc";
 import { format } from "date-fns";
+import Image from "next/image";
 
 const Orders: NextPage = () => {
-	const data = trpc.useQuery(["orders.getall"]);
-
-	console.log(data);
+	const data = trpc.useQuery(["order.getall"]);
 
 	return (
 		<>
@@ -24,38 +23,38 @@ const Orders: NextPage = () => {
 					{data.data?.orders.map((o: any) => (
 						<div
 							key={o.id}
-							className="p-5 border rounded-2xl overflow-hidden my-10"
+							className="p-5 border border-gray-700 rounded-2xl overflow-hidden my-10"
 						>
-							<p className="text-sm font-semibold opacity-70">
+							<p className="text-sm font-light opacity-70">
 								Ordered At:{" "}
-								<span className="font-medium">
+								<span className="font-light">
 									{format(new Date(o?.createdAt), "PPpp")}
 								</span>
 							</p>
-							{o?.items.map((item: any) => (
+							{JSON.parse(o?.items as any).map((item: any) => (
 								<div key={item?.id}>
 									<li className="flex py-4">
-										<div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-											<img
-												src={item?.imageUrl[0]}
-												alt="Image"
+										<div className="h-24 w-24 relative flex-shrink-0 overflow-hidden rounded-md border border-gray-700">
+											<Image
+												src={item.imageUrl[0]}
+												quality={30}
+												alt="Product images"
+												blurDataURL={item.imageUrl[0]}
+												layout="fill"
+												placeholder="blur"
 												className="h-full w-full object-cover object-center"
 											/>
 										</div>
 
 										<div className="ml-4 flex flex-1 flex-col">
 											<div>
-												<div className="flex justify-between text-base font-medium text-gray-900">
-													<h3>
-														<a href="#">
-															{item?.title}
-														</a>
-													</h3>
+												<div className="flex justify-between text-base font-medium text-gray-100">
+													<h3>{item?.title}</h3>
 													<p className="ml-4">
 														${item?.price}
 													</p>
 												</div>
-												<p className="mt-1 text-sm text-gray-500">
+												<p className="mt-1 text-sm text-gray-300">
 													{item?.color}
 												</p>
 											</div>
