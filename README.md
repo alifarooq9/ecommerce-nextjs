@@ -4,7 +4,7 @@ this is an ecommerce website build on nextjs and t3 stack it is more faster than
 
 ### live website
 
-https://www.matteblack.tk/
+https://matteblack.alidotm.me
 
 ## installation
 
